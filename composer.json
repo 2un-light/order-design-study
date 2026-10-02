@@ -1,0 +1,13 @@
+{
+    "name": "study/order-design-study",
+    "description": "PHP 객체지향 설계 수준에 따른 유지보수성 비교",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Concentrated\\": "01-concentrated/src/",
+            "Overengineered\\": "02-overengineered/src/",
+            "Flexible\\": "03-flexible/src/"
+        }
+    },
+    "require": {}
+}
