@@ -6,28 +6,26 @@ class Bag {
     private Invitation $invitation; //초대장
     private Ticket $ticket; //티켓
 
-    public function __construct(int $amount, ?Invitation $invitation){
-        $this->amount = $amount;
-        $this->invitation = $invitation;
+    public function hold(Ticket $ticket): int {
+        if($this->hasInvitation()) {
+            $this->setTicket($ticket);
+            return 0;
+        }else {
+            $this->setTicket($ticket);
+            $this->minusAmount($ticket->getFee());
+            return $ticket->getFee();
+        }
     }
 
-    public function hasInvitation(): bool {
+    private function hasInvitation(): bool {
         return $this->invitation != null;
     }
 
-    public function hasTicket(): bool {
-        return $this->ticket != null;
-    }
-
-    public function setTicket(Ticket $ticket): void {
+    private function setTicket(Ticket $ticket): void {
         $this->ticket = $ticket;
     }
 
-    public function minusAmount(int $amount): void {
+    private function minusAmount(int $amount): void {
         $this->amount -= $amount;
-    }
-
-    public function plusAmount(int $amount): void {
-        $this->amount += $amount;
     }
 }

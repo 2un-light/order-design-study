@@ -4,11 +4,7 @@
 class TicketSeller {
     private TicketOffice $ticketOffice; //매표소
 
-    public function __construct(TicketOffice $ticketOffice) {
-        $this->ticketOffice = $ticketOffice;
-    }
-
-    public function getTicketOffice(): TicketOffice {
-        return $this->ticketOffice;
+    public function sellTo(Audience $audience): void {
+        $this->ticketOffice->sellTicketTo($audience);
     }
 }

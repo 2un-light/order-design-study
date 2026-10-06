@@ -7,20 +7,16 @@ class TicketOffice {
     /** @var Ticket[] */
     private array $tickets = []; //판매하거나 교환해줄 티켓 목록
 
-    public function __construct(int $amount, Ticket ...$tickets) {
-        $this->amount = $amount;
-        $this->tickets = $tickets;
+    public function sellTicketTo(Audience $audience): void {
+        $this->plusAmount($audience->buy($this->getTicket()));
     }
 
-    public function getTicket(): ?Ticket {
+
+    private function getTicket(): ?Ticket {
         return array_shift($this->tickets);
     }
 
-    public function minusAmount(int $amount): void {
-        $this->amount -= $amount;
-    }
-
-    public function plusAmount(int $amount): void {
+    private function plusAmount(int $amount): void {
         $this->amount += $amount;
     }
 
