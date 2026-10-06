@@ -1,5 +1,10 @@
 <?php
 
+namespace Chapter04\Step1;
+
+use DateTimeImmutable;
+use DiscountConditionType;
+
 class DiscountCondition {
     private DiscountConditionType $type;
 

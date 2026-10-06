@@ -1,5 +1,11 @@
 <?php
 
+namespace Chapter04\Step2;
+
+use DateTimeImmutable;
+use DiscountConditionType;
+use InvalidArgumentException;
+
 class DiscountCondition {
     private DiscountConditionType $type;
     private int $sequence;
