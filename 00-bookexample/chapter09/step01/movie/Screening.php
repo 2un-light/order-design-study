@@ -1,10 +1,10 @@
 <?php
 
-namespace Chapter08\Movie;
+namespace Chapter09\Movie;
 
-use Chapter08\Money\Money;
-use Chapter08\Movie\Movie;
-use Chapter08\Movie\Reservation;
+use Chapter09\Money\Money;
+use Chapter09\Movie\Movie;
+use Chapter09\Movie\Reservation;
 use DateTimeImmutable;
 
 class Screening {
