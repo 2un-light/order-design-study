@@ -11,6 +11,7 @@ class DiscountPolicyFactory {
         return match ($memberType) {
             'NORMAL' => new NormalDiscountPolicy(),
             'VIP' => new VipDiscountPolicy(),
+            'GOLD' => new GoldDiscountPolicy(),
             default => throw new InvalidArgumentException(
                 '지원하지 않는 회원 등급입니다.'
             ),
