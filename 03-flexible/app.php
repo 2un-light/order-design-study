@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Flexible\Application\OrderService;
 use Flexible\Domain\Discount\NoDiscountPolicy;
 use Flexible\Domain\Discount\RateDiscountPolicy;
+use Flexible\Domain\Payment\BankPayment;
 use Flexible\Domain\Payment\CardPayment;
 use Flexible\Domain\Shipping\ThresholdShippingPolicy;
 use Flexible\Infrastructure\Repository\InMemoryOrderRepository;
@@ -16,16 +17,18 @@ $orderService = new OrderService(
     discountPolicies: [
         'NORMAL' => new NoDiscountPolicy(),
         'VIP' => new RateDiscountPolicy(0.1),
+        'GOLD' => new RateDiscountPolicy(0.05),
     ],
 
     //배송비 정책
     shippingPolicy: new ThresholdShippingPolicy(
-        freeShippingThreshold: 50000,
+        freeShippingThreshold: 70000,
         shippingFee: 3000
     ),
 
     paymentMethods: [
         'CARD' => new CardPayment(),
+        'BANK' => new BankPayment(),
     ],
 
     orderRepository: new InMemoryOrderRepository(),
