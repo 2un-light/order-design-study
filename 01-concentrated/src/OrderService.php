@@ -39,6 +39,8 @@ class OrderService {
             $discountRate = 0;
         }elseif($request['memberType'] === 'VIP') { //VIP는 10% 할인
             $discountRate = 0.1;
+        }elseif($request['memberType'] === 'GOLD'){ //GOLD는 5% 할인
+            $discountRate = 0.05; 
         }else {
             throw new InvalidArgumentException(('지원하지 않는 회원 등급입니다.'));
         }
@@ -47,7 +49,7 @@ class OrderService {
         $discountedPrice = $subtotal - $discountAmount;
 
         //배송비 계산
-        if($discountedPrice >= 50000) {
+        if($discountedPrice >= 70000) {
             $shippingFee = 0;
         } else {
             $shippingFee = 3000;
@@ -57,6 +59,13 @@ class OrderService {
 
         //결제 처리
         if($request['paymentType'] === 'CARD') {
+            if(empty($request['paymentKey'])) {
+                throw new InvalidArgumentException(('카드 결제 정보가 없습니다.'));
+            }
+
+            //결제 성공
+            $paymentStatus = 'PAID';
+        }elseif($request['paymentType'] === 'BANK'){
             if(empty($request['paymentKey'])) {
                 throw new InvalidArgumentException(('카드 결제 정보가 없습니다.'));
             }
