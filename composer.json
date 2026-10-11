@@ -9,5 +9,8 @@
             "Flexible\\": "03-flexible/src/"
         }
     },
-    "require": {}
+    "require-dev": {
+        "phpmd/phpmd": "^3.0",
+        "phpmetrics/phpmetrics": "^2.11"
+    }
 }
